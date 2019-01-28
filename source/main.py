@@ -47,6 +47,7 @@ class ConfigSingleton(object):
     def get_config(self):
         return self._config
 
+
 if __name__ == '__main__':
     import os
     env = os.getenv("APP_ENV", "dev")
@@ -56,10 +57,3 @@ if __name__ == '__main__':
     }
 
     config = IniConfigBuilder().construct(env_pointer[env])
-
-    s1 = ConfigSingleton()
-    s1.set_config(None)
-    print(s1.get_config())
-    s2 = ConfigSingleton()
-    s2.set_config(config)
-    print(s2.get_config())
