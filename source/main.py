@@ -15,9 +15,12 @@ class Section(object):
 if __name__ == '__main__':
     import os
     env = os.getenv("APP_ENV", "dev")
-    print(env)
+    env_pointer = {
+        'dev': "config/dev.ini",
+        "prod": "config/prod.ini"
+    }
     config_parser = ConfigParser.ConfigParser()
-    config_parser.read("config/dev.ini")
+    config_parser.read(env_pointer[env])
 
     config = Config()
     for section_name in config_parser.sections():
